@@ -177,7 +177,7 @@ TechIcon.displayName = 'TechIcon';
 const ProjectMockup = memo(({ card }: { card: ProjectsProps }) => {
   if (card.support === 'mobile') return (
     <div className='mb-10
-    w-[50%] max-w-[220px] max-h-[200]
+    w-[50%] max-w-[220px]
     sm:w-[220px] sm:max-w-none
     md:ml-2  md:w-[240px]  md:max-w-none
      lg:ml-4 lg:w-[240px] lg:max-w-none
@@ -241,7 +241,8 @@ const ProjectCard = memo(({ card, titleClasses, onHoverChange }: ProjectCardProp
         className="block w-full px-6 xl:px-6 "
       >
         <div className={`float-right w-[100%] h-fit lg:w-fit xl:w-fit z-50
-  flex justify-center items-center ${isPhone ? 'md:w-fit md:justify-end md:items-end' : 'justify-center items-center w-[100%]'} lg:justify-end lg:items-end / xl:justify-end xl:items-end`}>
+  flex justify-center items-center ${isPhone ? 'md:w-fit md:justify-end md:items-end' : 'justify-center items-center w-[100%]'} 
+  lg:justify-end lg:items-end  xl:justify-end xl:items-end`}>
           <ProjectMockup card={card} />
         </div>
 
