@@ -1,6 +1,5 @@
-import { useRef, useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect, lazy } from 'react';
 import type { ProjectsProps } from '@/App';
-import closeIcon from "@/assets/closeIcon.avif";
 import { motion, AnimatePresence } from 'framer-motion';
 import { Icon } from '@iconify/react';
 
@@ -32,7 +31,7 @@ interface SlideModalProps {
   project: ProjectsProps | null;
 }
 
-export const VideoPlayer = ({ src, deviceType }: VideoProps) => {
+export const VideoPlayer = ({ src }: VideoProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import MusicPlayer from '../../modularized/MusicPlayer';
 import { Icon } from '@iconify/react';
-// import { Colors } from '@/lib/Colors'; // Descomenta si lo necesitas
 import { useLanguage } from '@/lib/hooks/LanguageContext';
 
 interface Props {
@@ -10,10 +9,42 @@ interface Props {
   modalIsOpen: boolean;
 }
 
+const DownloadCVButton = () => {
+  const iconClasses = `w-[40px] h-[40px] md:w-[50px] md:h-[50px]`;
+  const { language } = useLanguage();
+
+  const handleDownload = () => {
+    // 1. Creamos un elemento <a> (enlace) en la memoria
+    const link = document.createElement('a');
+
+    // 2. Le asignamos la ruta de tu archivo (como está en 'public', empieza con '/')
+    link.href = language === 'es' ? '/CV_Franco_Carballes.pdf' : '/Resume_Franco_Carballes.pdf';
+
+    // 3. Le decimos qué nombre queremos que tenga el archivo al descargarse
+    link.download = language === 'es' ? 'Franco_Carballes_CV.pdf' : 'Franco_Carballes_Resume';
+
+    // 4. Lo agregamos temporalmente al documento, hacemos click y lo borramos
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <button
+      onClick={handleDownload}
+      onTouchStart={(e) => e.stopPropagation()}
+      title={language === 'es' ? 'Download resume' : 'Descargar currículum'}
+
+    >
+      <Icon icon="pepicons-pencil:cv" className={iconClasses} />
+    </button>
+  );
+};
+
 const ContactButton = () => {
   const [isCopied, setIsCopied] = useState(false);
   const { language } = useLanguage(); // Traemos el idioma para el tooltip
-  const iconClasses = `w-[100%] h-[100%]`;
+  const iconClasses = `w-[40px] h-[40px] md:w-[50px] md:h-[50px]`;
 
   const handleCopyEmail = async () => {
     const email = "franco.ncarballes@gmail.com";
@@ -34,19 +65,20 @@ const ContactButton = () => {
         className='h-[100px] w-[100px] cursor-pointer'
         onClick={handleCopyEmail}
         onTouchStart={(e) => e.stopPropagation()}
+        title={language === 'es' ? 'Copiar dirección email' : 'Copy email address'}
       >
         <Icon icon="heroicons:envelope" className={iconClasses} />
       </a>
       <div
         className={`
-          absolute -bottom-10 left-1/2 -translate-x-1/2 
-          px-3 py-1.5 bg-neutral-800 text-white text-xs font-medium rounded-md shadow-lg
+          absolute -bottom-14 left-1/2 -translate-x-1/2 
+          px-3 py-2 bg-neutral-800 text-white text-xl font-medium rounded-md shadow-lg
           whitespace-nowrap pointer-events-none
           transition-all duration-300 ease-out
           ${isCopied ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-2 scale-95'}
         `}
       >
-        {language === 'es' ? '✅ Dirección copiada' : '✅ Address copied'}
+        {language === 'es' ? '✅ Dirección Email copiada' : '✅Email address copied'}
         <div className="absolute left-1/2 -top-1 -translate-x-1/2 w-2.5 h-2.5 bg-neutral-800 -rotate-45"></div>
       </div>
     </>
@@ -139,27 +171,29 @@ export default function Navbar({ isScrolled, activeSection, modalIsOpen }: Props
   };
 
   const iconColor = isScrolled ? '#CBCBCB' : '#000000';
-  const iconClasses = `w-[100%] h-[100%]`;
+  const iconClasses = `w-[40px] h-[40px] md:w-[50px] md:h-[50px]`;
 
   return (
     <>
       <nav
         className={`
-          fixed top-0 left-0 w-full h-[100px] sm:h-[90px] px-4 py-4 md:px-10 
-          flex items-center justify-between z-50 gap-2 sm:gap-10
+          fixed top-0 left-0 w-full h-[115px] sm:h-[90px] px-4 py-4 md:px-10 
+          flex items-center justify-between z-50 gap-2 sm:gap-2
           transition-colors duration-300 ease-in-out 
           backdrop-blur-xl ${isScrolled ? 'bg-black/20' : 'bg-transparent'}
           ${modalIsOpen ? '-translate-y-full' : 'translate-y-0'}
         `}
       >
-        <div className='w-[33%] py-4 sm:w-[50%]'>
+        <div className='w-[50%] py-4 sm:w-[40%]'>
           <MusicPlayer scrolled={isScrolled} />
         </div>
 
-        <div className='w-[66%] sm:w-[50%] gap-2 sm:gap-10 md:gap-10 h-full flex justify-end items-center'>
-          <ul className={` min-w-[100px] w-auto h-[100%] flex flex-row items-center gap-2 sm:gap-4 `}>
+        <div className='w-[50%] sm:w-[60%]  gap-2 sm:gap-10 md:gap-10 h-full flex justify-end items-center'>
+          <ul className={` pl-2 
+              grid grid-cols-2 place-items-center sm:flex sm:flex-row sm:items-center gap-2 sm:gap-4`}>
+
             {/* SWITCH DE IDIOMAS */}
-            <li className="flex items-center mx-4 w-[1.6wv] justify-center pl-2 sm:pl-4 border-l border-neutral-400/40">
+            <li className="flex items-center  mx-4 w-[1.6wv] justify-center pl-2 sm:pl-4 border-l border-neutral-400/40">
               <button
                 onClick={toggleLanguage}
                 className={`flex items-center  gap-1 text-sm sm:text-base font-bold font-sans tracking-widest transition-all duration-300 hover:scale-110 ${isScrolled ? 'text-[#FFFFFF]' : 'text-[#000000]'}`}
@@ -171,10 +205,10 @@ export default function Navbar({ isScrolled, activeSection, modalIsOpen }: Props
                 <span className={`${language === 'en' ? '' : 'opacity-40'}`}>EN</span>
               </button>
             </li>
-            <li className={`${getNavLinkClasses('')}   w-[1.6vw]`}>
+            <li className={`${getNavLinkClasses('')}   `}>
               <ContactButton />
             </li>
-            <li className={`${getNavLinkClasses('')} w-[1.6vw]`}>
+            <li className={`${getNavLinkClasses('')}`}>
               <a
                 href="https://github.com/FNCarballes"
                 target="_blank"
@@ -184,15 +218,8 @@ export default function Navbar({ isScrolled, activeSection, modalIsOpen }: Props
                 <Icon icon="mdi:github" className={`${iconClasses}   hover:text-brand-wine ${isScrolled ? 'text-white ' : 'text-black'}`} />
               </a>
             </li>
-            <li className={`${getNavLinkClasses('')} w-[1.6vw]`}>
-              <a
-                href="https://www.linkedin.com/in/franco-carballes-752625345"
-                target="_blank"
-                rel="noreferrer"
-                onTouchStart={(e) => e.stopPropagation()}
-              >
-                <Icon icon="pepicons-pencil:cv" className={iconClasses} />
-              </a>
+            <li className={`${getNavLinkClasses('')}`}>
+              <DownloadCVButton />
             </li>
           </ul>
 
@@ -230,7 +257,8 @@ export default function Navbar({ isScrolled, activeSection, modalIsOpen }: Props
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="relative xl:hidden flex flex-col w-100px justify-center items-center gap-1.5 z-50 p-2 cursor-pointer pointer-events-auto transition-transform duration-300 hover:scale-110"
+            className="relative xl:hidden flex flex-col w-100px justify-center items-center 
+            gap-1.5 z-50 p-2 cursor-pointer pointer-events-auto transition-transform duration-300 hover:scale-110"
             onTouchStart={(e) => e.stopPropagation()}
             aria-label="Open menu"
           >

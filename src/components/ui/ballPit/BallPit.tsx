@@ -31,14 +31,14 @@ gsap.registerPlugin(Observer);
 /* ------------------------------------------------------------------ */
 /*  Shared temp objects (avoid per-frame allocations)                 */
 /* ------------------------------------------------------------------ */
-const _tmpPos = new Vector3();
-const _tmpVel = new Vector3();
-const _tmpOtherPos = new Vector3();
-const _tmpOtherVel = new Vector3();
-const _tmpDiff = new Vector3();
-const _tmpCorrection = new Vector3();
-const _tmpVelCorrection = new Vector3();
-const _tmpFirst = new Vector3();
+// const _tmpPos = new Vector3();
+// const _tmpVel = new Vector3();
+// const _tmpOtherPos = new Vector3();
+// const _tmpOtherVel = new Vector3();
+// const _tmpDiff = new Vector3();
+// const _tmpCorrection = new Vector3();
+// const _tmpVelCorrection = new Vector3();
+// const _tmpFirst = new Vector3();
 const _matrixDummy = new Object3D();
 
 /* ------------------------------------------------------------------ */

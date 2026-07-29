@@ -67,7 +67,7 @@ const getCardsData = (lang: string): ProjectsProps[] => {
       title: "Friend Zone",
       support: "mobile",
       image: [mate],
-      content: isEs 
+      content: isEs
         ? `Aplicación móvil para la gestión de eventos lúdicos y solidarios con enfoque en entornos seguros y ayuda social.\n\n▸  <strong>Características principales:</strong> Chats privados y grupales en tiempo real exclusivos para participantes, junto con un mapa interactivo que visibiliza puntos de ayuda y causas sociales.\n\n▸  <strong>Frontend:</strong> React Native (Expo), React Query para gestión de estado del servidor y caché, y Zustand para estado global.\n\n▸  <strong>Backend:</strong> Arquitectura orientada a eventos mediante WebSockets, colas/workers para procesamiento asíncrono, Redis como capa de caché, MongoDB como base de datos y Firebase Storage para archivos.\n\n▸  <strong>Seguridad:</strong> Autenticación con tokens RS256, cifrado de contraseñas con bcrypt y gestión segura de secretos y variables de entorno.`
         : `Mobile application for managing recreational and charity events, focusing on safe environments and social assistance.\n\n▸  <strong>Main features:</strong> Real-time private and group chats exclusive to participants, along with an interactive map that highlights help points and social causes.\n\n▸  <strong>Frontend:</strong> React Native (Expo), React Query for server state and cache management, and Zustand for global state.\n\n▸  <strong>Backend:</strong> Event-driven architecture using WebSockets, queues/workers for asynchronous processing, Redis as a caching layer, MongoDB as the database, and Firebase Storage for files.\n\n▸  <strong>Security:</strong> Authentication with RS256 tokens, password hashing with bcrypt, and secure management of secrets and environment variables.`,
       tech: ["React Native", "Linux", "Express", "JavaScript", "Firebase", "Google Cloud", "Redis", "Figma", "TypeScript", "Node.js", "MongoDB", "Mongoose", "Socket.IO", "Zustand", "Zod", "Expo"],
@@ -178,7 +178,7 @@ const ProjectMockup = memo(({ card }: { card: ProjectsProps }) => {
   if (card.support === 'mobile') return (
     <div className='mb-10
     w-[50%] max-w-[220px] max-h-[200]
-    sm:w-[240px] sm:max-w-none
+    sm:w-[220px] sm:max-w-none
     md:ml-2  md:w-[240px]  md:max-w-none
      lg:ml-4 lg:w-[240px] lg:max-w-none
     xl:w-[280px] xl:mx-4 xl:max-w-none
@@ -263,7 +263,7 @@ ProjectCard.displayName = 'ProjectCard';
 
 const ProjectSection = ({ projectSelected, setProjectSelected }: ContentProps) => {
   const [hoveredProject, setHoveredProject] = useState<ProjectsProps | null>(null);
-  
+
   const { language } = useLanguage();
 
   const localizedCards = useMemo(() => getCardsData(language), [language]);
@@ -322,7 +322,8 @@ const ProjectSection = ({ projectSelected, setProjectSelected }: ContentProps) =
         </div>
       </div>
 
-      <div className='w-[90%]  rounded-3xl flex justify-start p-10 mt-40 font-montserrat font-medium text-lg md:text-2xl group relative md:[75%] min-h-[10dvh]              
+      <div className='w-[80%]  rounded-3xl flex justify-start p-10 mt-40 font-montserrat font-medium
+       text-lg md:text-2xl group relative md:[75%] min-h-[10dvh]              
       bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-xl
             border border-white/40
             shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5),_inset_0_1px_0_rgba(255,255,255,0.8)]

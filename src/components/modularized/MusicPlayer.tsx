@@ -1,5 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
+import barroTalVez from '@/assets/music/BarroTalVez-OliFirpo.mp3';
+import soyQuien from '@/assets/music/SoyQuienNoHaDeMorir.mp3';
+import showMeHow from '@/assets/music/Showmehowtolive-Audioslave.mp3';
 
+const playlist: Song[] = [
+  { id: 1, title: "Barro tal vez", artist: "Oli Firpo", src: barroTalVez },
+  { id: 3, title: "Soy quién no ha de morir", artist: "Divididos", src: soyQuien },
+  { id: 2, title: "Show me how to live", artist: "Audioslave", src: showMeHow },
+];
 interface Song {
   id: number;
   title: string;
@@ -7,12 +15,6 @@ interface Song {
   src: string;
 }
 
-// Nuestra lista de reproducción
-const playlist: Song[] = [
-  { id: 1, title: "Nombre de tu canción 1", artist: "Artista 1", src: "/album/cancion1.mp3" },
-  { id: 2, title: "Nombre de tu canción 2", artist: "Artista 2", src: "/album/cancion2.mp3" },
-  { id: 3, title: "Nombre de tu canción 3", artist: "Artista 3", src: "/album/cancion3.mp3" },
-];
 
 interface Props {
   scrolled: boolean;
@@ -98,7 +100,8 @@ const MusicPlayer = ({ scrolled }: Props) => {
   const progressFill = scrolled ? 'bg-white' : 'bg-black';
 
   return (
-    <div className="z-50 flex flex-col gap-2 hover:scale-110 p-3 backdrop-blur-lg bg-[#ffffff17] border-white/10 shadow-xl border rounded-xl w-[100%] max-w-[300px] transition-all">
+    <div className="z-50 flex flex-col gap-1 sm:gap-2 hover:scale-110
+     px-4 py-2 backdrop-blur-lg bg-[#ffffff17] border-white/10 shadow-xl border rounded-xl w-[100%] max-w-[300px] transition-all">
       <audio
         ref={audioRef}
         src={currentSong.src}
@@ -111,10 +114,10 @@ const MusicPlayer = ({ scrolled }: Props) => {
         
         {/* Info de la canción */}
         <div className="flex flex-col items-center sm:items-start text-center sm:text-left flex-1 overflow-hidden w-full">
-          <span className={`${textColor} font-semibold text-sm truncate w-full transition-colors`}>
+          <span className={`${textColor} font-semibold text-sm sm:text-lg truncate w-full transition-colors`}>
             {currentSong.title}
           </span>
-          <span className={`${subtextColor} text-xs truncate w-full transition-colors`}>
+          <span className={`${subtextColor} text-sm sm:text-lg truncate w-full transition-colors`}>
             {currentSong.artist}
           </span>
         </div>
@@ -163,7 +166,7 @@ const MusicPlayer = ({ scrolled }: Props) => {
       </div>
 
       {/* Barra de progreso */}
-      <div className="w-full mt-1">
+      <div className="w-full mt-0">
         <div
           ref={progressBarRef}
           onClick={handleProgressClick}
