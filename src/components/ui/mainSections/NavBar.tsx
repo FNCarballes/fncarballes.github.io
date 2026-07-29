@@ -33,7 +33,7 @@ const DownloadCVButton = () => {
     <button
       onClick={handleDownload}
       onTouchStart={(e) => e.stopPropagation()}
-      title={language === 'es' ? 'Download resume' : 'Descargar currículum'}
+      title={language === 'es' ? 'Descargar currículum' : 'Download resume'}
 
     >
       <Icon icon="pepicons-pencil:cv" className={iconClasses} />
