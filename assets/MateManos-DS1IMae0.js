@@ -1,0 +1,1 @@
+var e=`/assets/MateManos-C00KscGH.png`;export{e as t};
