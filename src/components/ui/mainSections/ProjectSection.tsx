@@ -1,5 +1,5 @@
 import { useState, memo, useMemo } from 'react';
-import mate from "@/assets/MateManos.png";
+import fzPhoto from "@/assets/fzScreen.png";
 import aapg from "@/assets/aapgImg.png";
 import BorderGlow from '../card/HoverCard';
 import { SlideModal } from '../modal/NativeModal';
@@ -66,7 +66,7 @@ const getCardsData = (lang: string): ProjectsProps[] => {
       direction: ["bottom", "right"],
       title: "Friend Zone",
       support: "mobile",
-      image: [mate],
+      image: [fzPhoto],
       content: isEs
         ? `Aplicación móvil para la gestión de eventos lúdicos y solidarios con enfoque en entornos seguros y ayuda social.\n\n▸  <strong>Características principales:</strong> Chats privados y grupales en tiempo real exclusivos para participantes, junto con un mapa interactivo que visibiliza puntos de ayuda y causas sociales.\n\n▸  <strong>Frontend:</strong> React Native (Expo), React Query para gestión de estado del servidor y caché, y Zustand para estado global.\n\n▸  <strong>Backend:</strong> Arquitectura orientada a eventos mediante WebSockets, colas/workers para procesamiento asíncrono, Redis como capa de caché, MongoDB como base de datos y Firebase Storage para archivos.\n\n▸  <strong>Seguridad:</strong> Autenticación con tokens RS256, cifrado de contraseñas con bcrypt y gestión segura de secretos y variables de entorno.`
         : `Mobile application for managing recreational and charity events, focusing on safe environments and social assistance.\n\n▸  <strong>Main features:</strong> Real-time private and group chats exclusive to participants, along with an interactive map that highlights help points and social causes.\n\n▸  <strong>Frontend:</strong> React Native (Expo), React Query for server state and cache management, and Zustand for global state.\n\n▸  <strong>Backend:</strong> Event-driven architecture using WebSockets, queues/workers for asynchronous processing, Redis as a caching layer, MongoDB as the database, and Firebase Storage for files.\n\n▸  <strong>Security:</strong> Authentication with RS256 tokens, password hashing with bcrypt, and secure management of secrets and environment variables.`,

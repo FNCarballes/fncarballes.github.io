@@ -116,7 +116,7 @@ export default function PhoneMockup3D({
                                 key={i}
                                 src={img}
                                 alt={`Screen ${i + 1}`}
-                                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700
+                                className={`absolute inset-0 w-full h-full object-fill transition-opacity duration-700
                                     ${i === currentIndex ? 'opacity-100' : 'opacity-0'}`}
                             />
                         ))}
@@ -132,14 +132,6 @@ export default function PhoneMockup3D({
                             <div className="w-[8px] h-[8px] rounded-full bg-[#1a1a1a] ring-1 ring-[#333]" />
                         </div>
 
-                        {/* Status bar */}
-                      <div className="absolute top-[1%]  left-[8%] p-1 right-[8%] flex justify-between items-center text-white text-[0.45rem] xl:text-[0.65rem] xl:font-medium z-10 pointer-events-none">
-                            <span className="drop-shadow-md">9:41</span>
-                            <span className="flex gap-1 drop-shadow-md"><span>📶</span><span>🔋</span></span>
-                        </div>
-
-                        {/* Home indicator */}
-                        {/* <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[100px] h-[4px] bg-white/80 rounded-full z-10" /> */}
                     </div>
                 </div>
 

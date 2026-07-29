@@ -82,7 +82,8 @@ export default function Presentationdiv({ isActive }: Props) {
 
             {isActive && (
                 <motion.div
-                    className="absolute w-[90%] sm:w-[80%] md:w-[70%] max-w-4xl p-6 sm:p-8 md:p-10 backdrop-blur-2xl bg-white/5 border border-white/10 rounded-3xl pointer-events-none flex flex-col items-center justify-center"
+                    className="absolute w-[90%] sm:w-[80%] md:w-[70%] max-w-4xl p-6 sm:p-8 md:p-10 backdrop-blur-2xl bg-white/5 border
+                     border-white/10 rounded-3xl pointer-events-none flex flex-col items-center justify-center"
                     style={{ opacity: textsOpacity }}
                 >
                     <motion.div
