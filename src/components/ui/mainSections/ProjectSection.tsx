@@ -9,8 +9,8 @@ import { Icon } from '@iconify/react';
 import PhoneMockup3D from '../mockups/PhoneMockup';
 import LenovoLaptop from '../mockups/LaptopMockup';
 import mediaConvImg from '@/assets/MediaConverterImg.png';
-import wonder1 from '@/assets/wonderImg1.png';
-import wonder2 from '@/assets/wonderImg2.png';
+import munchies0 from '@/assets/munchiesImg0.png';
+import munchies1 from '@/assets/munchiesImg1.jpg';
 import BoothMockup from '../mockups/BoothMockup';
 import { type ProjectsProps } from '@/App';
 import { useLanguage } from '@/lib/hooks/LanguageContext'; // ✅ Importamos el hook
@@ -60,8 +60,31 @@ const getCardsData = (lang: string): ProjectsProps[] => {
   const isEs = lang === 'es';
 
   return [
-    {
+        {
       id: "1",
+      colors: ['#0E1130', '#FF8800', '#0E1130'],
+      direction: ["bottom", "left"],
+      title: "Munchies",
+      support: "booth",
+      image: [munchies0, munchies1],
+      content: isEs
+        ? `Ecosistema multiplataforma para franquicias de comida rápida que centraliza ventas, fidelización y la administración de múltiples sucursales.\n\n▸ <strong>App Clientes:</strong> Programa de fidelización con acumulación de puntos, canje de beneficios y promociones personalizadas.\n\n▸ <strong>App Staff (PC/Mobile):</strong> Gestión multirol de pedidos, stock y promociones, con analíticas centralizadas por sucursal.\n\n▸ <strong>Backend:</strong> Procesamiento de pagos con Stripe, comunicación en tiempo real mediante WebSockets y pipelines de agregación optimizados para consultas de alto rendimiento.\n\n▸ <strong>Seguridad:</strong> Tokenización de pagos, autenticación con tokens asimétricos (RS256) y cifrado de contraseñas con bcrypt.`
+        : `Multi-platform ecosystem for fast food franchises that centralizes sales, loyalty programs, and the administration of multiple branches.\n\n▸ <strong>Customer App:</strong> Loyalty program with point accumulation, benefit redemption, and personalized promotions.\n\n▸ <strong>Staff App (PC/Mobile):</strong> Multi-role management of orders, stock, and promotions, with centralized analytics per branch.\n\n▸ <strong>Backend:</strong> Payment processing with Stripe, real-time communication via WebSockets, and aggregation pipelines optimized for high-performance queries.\n\n▸ <strong>Security:</strong> Payment tokenization, asymmetric token authentication (RS256), and password hashing with bcrypt.`,
+      tech: ["Linux", "JavaScript", "Express", "Google Cloud", "Redis", "TypeScript", "Node.js", "MongoDB", "Mongoose", "Socket.IO", "Zustand", "Zod", "Expo", "Tauri", "React Native", "Tailwind CSS", "Figma"],
+      segments: isEs ? [
+        { title: "Backend", content: "Detalles del backend robusto con pipelines de agregación..." },
+        { title: "¿Por qué multiplataforma?", content: "Beneficios de usar Tauri y React Native..." },
+        { title: "App de clientes", content: "Detalles de la UI/UX y sistema de puntos..." },
+        { title: "App de staff", content: "Gestión de roles y sucursales en PC..." }
+      ] : [
+        { title: "Backend", content: "Details of the robust backend with aggregation pipelines..." },
+        { title: "Why multi-platform?", content: "Benefits of using Tauri and React Native..." },
+        { title: "Customer App", content: "UI/UX details and points system..." },
+        { title: "Staff App", content: "Role and branch management on PC..." }
+      ]
+    },
+    {
+      id: "2",
       colors: ['#E04882', '#38385C', '#070736'],
       direction: ["bottom", "right"],
       title: "Friend Zone",
@@ -83,29 +106,7 @@ const getCardsData = (lang: string): ProjectsProps[] => {
         { title: "Why did I choose these technologies?", content: "Reasons and trade-offs of the chosen stack..." }
       ]
     },
-    {
-      id: "2",
-      colors: ['#0E1130', '#FF8800', '#0E1130'],
-      direction: ["bottom", "left"],
-      title: "Wonder",
-      support: "booth",
-      image: [wonder1, wonder2],
-      content: isEs
-        ? `Ecosistema multiplataforma para franquicias de comida rápida que centraliza ventas, fidelización y la administración de múltiples sucursales.\n\n▸ <strong>App Clientes:</strong> Programa de fidelización con acumulación de puntos, canje de beneficios y promociones personalizadas.\n\n▸ <strong>App Staff (PC/Mobile):</strong> Gestión multirol de pedidos, stock y promociones, con analíticas centralizadas por sucursal.\n\n▸ <strong>Backend:</strong> Procesamiento de pagos con Stripe, comunicación en tiempo real mediante WebSockets y pipelines de agregación optimizados para consultas de alto rendimiento.\n\n▸ <strong>Seguridad:</strong> Tokenización de pagos, autenticación con tokens asimétricos (RS256) y cifrado de contraseñas con bcrypt.`
-        : `Multi-platform ecosystem for fast food franchises that centralizes sales, loyalty programs, and the administration of multiple branches.\n\n▸ <strong>Customer App:</strong> Loyalty program with point accumulation, benefit redemption, and personalized promotions.\n\n▸ <strong>Staff App (PC/Mobile):</strong> Multi-role management of orders, stock, and promotions, with centralized analytics per branch.\n\n▸ <strong>Backend:</strong> Payment processing with Stripe, real-time communication via WebSockets, and aggregation pipelines optimized for high-performance queries.\n\n▸ <strong>Security:</strong> Payment tokenization, asymmetric token authentication (RS256), and password hashing with bcrypt.`,
-      tech: ["Linux", "JavaScript", "Express", "Google Cloud", "Redis", "TypeScript", "Node.js", "MongoDB", "Mongoose", "Socket.IO", "Zustand", "Zod", "Expo", "Tauri", "React Native", "Tailwind CSS", "Figma"],
-      segments: isEs ? [
-        { title: "Backend", content: "Detalles del backend robusto con pipelines de agregación..." },
-        { title: "¿Por qué multiplataforma?", content: "Beneficios de usar Tauri y React Native..." },
-        { title: "App de clientes", content: "Detalles de la UI/UX y sistema de puntos..." },
-        { title: "App de staff", content: "Gestión de roles y sucursales en PC..." }
-      ] : [
-        { title: "Backend", content: "Details of the robust backend with aggregation pipelines..." },
-        { title: "Why multi-platform?", content: "Benefits of using Tauri and React Native..." },
-        { title: "Customer App", content: "UI/UX details and points system..." },
-        { title: "Staff App", content: "Role and branch management on PC..." }
-      ]
-    },
+
     {
       id: "3",
       colors: ['#000000', '#041387', '#111530'],
